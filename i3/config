@@ -104,7 +104,7 @@ bindsym $super+Control+Shift+Left resize grow width 1 px or 1 ppt
 # panel
 bar {
 	colors {
-        background #2f343f
+        background #000000
         statusline #2f343f
         separator #4b5262
 
@@ -130,9 +130,12 @@ for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused			#bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused			#bf616a #2f343f #d8dee8 #e09525 #ac4142
 client.focused_inactive	#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.unfocused		#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background		#2f343f
+
+exec --no-startup-id nvidia-settings --load-config-only
+exec --no-startup-id slack
