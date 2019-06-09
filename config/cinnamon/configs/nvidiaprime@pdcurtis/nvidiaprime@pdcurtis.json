@@ -1,0 +1,36 @@
+{
+    "head": {
+        "type": "header",
+        "description": "General Settings for the nVidia Prime Monitoring Applet"
+    },
+    "refreshInterval-spinner": {
+        "type": "spinbutton",
+        "default": 2,
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "units": "seconds",
+        "description": "Refresh Interval for Display:",
+        "tooltip": "Increase or decrease this spinner value to change the refresh interval - use a slow refresh if you have a slow machine",
+        "value": 2
+    },
+    "showGpuTemp": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show GPU Temperature as well as icon",
+        "tooltip": "Available in Horizontal and Vertical Panels. Display is in Degrees Centigrade.",
+        "value": true
+    },
+    "head2": {
+        "type": "header",
+        "description": "Additional Functionality"
+    },
+    "displayExtra": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Access enhanced functionality through Context Menu - needs Cinnamon Restart",
+        "tooltip": "Currently  adds glxspheres64 Graphics Processor Test - VirtualGL needs to be installed",
+        "value": true
+    },
+    "__md5__": "48c2d4309d89da11aabd6a5f16781c0c"
+}

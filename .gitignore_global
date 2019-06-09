@@ -1,0 +1,16 @@
+.idea
+.idea/
+.DS_Store
+script_perso
+script_perso/
+.git/
+.svn/
+vendor_old/
+web/personnal/
+elasticsearch.yml
+web/utils/bower_components
+node_modules
+.composer
+
+nohup.out
+/Trash/*

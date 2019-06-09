@@ -12,6 +12,8 @@ floating_modifier $super
 exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
+exec --no-startup-id nvidia-settings --load-config-only
+exec --no-startup-id slack
 
 # start a terminal
 bindsym $super+Return exec rxvt
@@ -19,6 +21,9 @@ bindsym $super+Return exec rxvt
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+
+# WORKSPACETAB
+bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show window -sidebar-mode -columns 3 -font 'Noto Sans 8'
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
@@ -104,15 +109,15 @@ bindsym $super+Control+Shift+Left resize grow width 1 px or 1 ppt
 # panel
 bar {
 	colors {
-        background #000000
-        statusline #2f343f
+        background #151515
+        statusline #151515
         separator #4b5262
 
 		# colour of border, background, and text
-        focused_workspace	#2f343f	#bf616a	#d8dee8
-        active_workspace	#2f343f	#2f343f	#d8dee8
-        inactive_workspace	#2f343f	#2f343f	#d8dee8
-        urgent_workspace	#2f343f	#ebcb8b	#2f343f
+        focused_workspace	#151515	#bf616a	#d8dee8
+        active_workspace	#151515	#151515	#d8dee8
+        inactive_workspace	#151515	#151515	#d8dee8
+        urgent_workspace	#151515	#ebcb8b	#151515
     }
         status_command i3status
 }
@@ -130,12 +135,9 @@ for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused			#bf616a #2f343f #d8dee8 #e09525 #ac4142
-client.focused_inactive	#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.unfocused		#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.background		#2f343f
-
-exec --no-startup-id nvidia-settings --load-config-only
-exec --no-startup-id slack
+client.focused			#bf616a #151515 #d8dee8 #e09525 #ac4142
+client.focused_inactive	#151515 #151515 #d8dee8 #151515 #151515
+client.unfocused		#151515 #151515 #d8dee8 #151515 #151515
+client.urgent			#151515 #151515 #d8dee8 #151515 #151515
+client.placeholder		#151515 #151515 #d8dee8 #151515 #151515
+client.background		#151515

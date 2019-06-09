@@ -116,18 +116,18 @@ URxvt.keysym.Control-Left:	\033[1;5D
 ! ------------------------------------------------------------------------------
 
 rofi.color-enabled: true
-rofi.color-window: #2e3440, #2e3440, #2e3440
-rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
-rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
-rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
+rofi.color-window: #151515, #151515, #151515
+rofi.color-normal: #151515, #d8dee9, #151515, #151515, #bf616a
+rofi.color-active: #151515, #b48ead, #151515, #151515, #93e5cc
+rofi.color-urgent: #151515, #ebcb8b, #151515, #151515, #ebcb8b
 rofi.modi: run,drun,window
 
 ! ------------------------------------------------------------------------------
 ! Dmenu configs
 ! ------------------------------------------------------------------------------
 
-dmenu.selforeground:    #d8dee9
-dmenu.background:       #2e3440
+dmenu.selforeground:    #d0d0d0
+dmenu.background:       #151515
 dmenu.selbackground:    #bf616a
-dmenu.foreground:       #d8dee9
+dmenu.foreground:       #d0d0d0
                                                            

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Photoshop
+Exec=/usr/share/playonlinux/playonlinux --run "Adobe Photoshop CS6"
+Type=Application
+Icon=/home/john/Images/icon_system/Photoshop_CC_icon.png
