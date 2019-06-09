@@ -1,6 +1,6 @@
 ROOT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 
-build: create-directories install-deps clone-repos install-repos
+build: create-directories install-deps
 
 install: clear-configuration symbolic-links copy-assets reload
 
@@ -14,16 +14,9 @@ create-directories:
 
 install-deps:
 	sudo apt install \
-	i3 \
-	i3-wm dunst i3lock i3status suckless-tools xclip \
-	compton hsetroot rxvt-unicode xsel rofi fonts-noto fonts-mplus xsettingsd lxappearance scrot viewnior \
-	cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev
-
-clone-repos:
-	-git clone https://github.com/jaagr/polybar.git ~/Programmes/polybar
-
-install-repos:
-	cd ~/Programmes/polybar && ./build.sh && cd $(ROOT_DIR)
+		i3 \
+		i3-wm dunst i3lock i3status suckless-tools xclip \
+		compton hsetroot rxvt-unicode xsel rofi fonts-noto fonts-mplus xsettingsd lxappearance scrot viewnior \
 
 clear-configuration:
 	rm -f ~/.Xresources
