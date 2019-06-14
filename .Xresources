@@ -43,10 +43,10 @@
 ! Font configuration
 ! ------------------------------------------------------------------------------
 
-URxvt*font:		xft:DejaVu Sans Mono:style=Book:pixelsize=12
-URxvt*boldFont:		xft:DejaVu Sans Mono:style=Bold:pixelsize=12
-URxvt*italicFont:	xft:DejaVu Sans Mono:style=Oblique:pixelsize=12
-URxvt*boldItalicFont:	xft:DejaVu Sans Mono:style=BoldOblique:pixelsize=12
+URxvt*font:		xft:DejaVu Sans Mono:style=Book:pixelsize=14
+URxvt*boldFont:		xft:DejaVu Sans Mono:style=Bold:pixelsize=14
+URxvt*italicFont:	xft:DejaVu Sans Mono:style=Oblique:pixelsize=14
+URxvt*boldItalicFont:	xft:DejaVu Sans Mono:style=BoldOblique:pixelsize=14
 
 ! ------------------------------------------------------------------------------
 ! Xft Font Configuration
@@ -74,15 +74,19 @@ URxvt*iso14755:			false
 URxvt*urgentOnBell:		true
 
 ! appearance
-URxvt*depth:			15
+URxvt*depth:			10
 URxvt*scrollBar:		false
-URxvt*scrollBar_right:	false
-URxvt*internalBorder:	15
-URxvt*externalBorder:	0
+URxvt*scrollBar_right:	        true
+URxvt*internalBorder:	        15
+URxvt*externalBorder:	        0
 URxvt.geometry:			84x22
 
 ! perl extensions
-URxvt.perl-ext-common:	default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:	default,matcher,clipboard,url-select,keyboard-select
+
+! matcher config
+URxvt.url-launcher:    google-chrome
+URxvt.matcher.button:  1
 
 ! macros for clipboard and selection
 URxvt.copyCommand:		xclip -i -selection clipboard
@@ -96,6 +100,9 @@ URxvt.keysym.M-u:		perl:url-select:select_next
 URxvt.urlLauncher:		google-chrome
 URxvt.underlineURLs:	true
 URxvt.urlButton:		1
+
+URvxt.url-select.button:            1
+URxvt.url-select.launcher:          google-chrome
 
 !personal copy/paste
 URxvt.keysym.Shift-C:		perl:clipboard:copy
