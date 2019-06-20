@@ -34,9 +34,6 @@ bindsym $super+Shift+b exec google-chrome
 bindsym $super+Shift+f exec nemo
 
 # changer le mode d'affichage des containers:
-# stacked: fenêtres maximisées, barres de titre des fenetres ouvertes empilées,
-# tabbed: fenêtres maximisées, barres de titre des fenetres ouvertes les unes à côtés des autres, comme des onglets,
-# default: tiling (pavage).
 bindsym $super+s layout toggle stacking
 bindsym $super+z layout toggle tabbed
 bindsym $super+e layout toggle default
@@ -55,15 +52,15 @@ bindsym $super+c kill
 bindsym $alt+F4 kill
 
 # change focus
-bindsym $super+Left focus left
-bindsym $super+Down focus down
-bindsym $super+Up focus up
+bindsym $super+Left  focus left
+bindsym $super+Down  focus down
+bindsym $super+Up    focus up
 bindsym $super+Right focus right
 
 # move focused window
-bindsym $super+Shift+Left move left
-bindsym $super+Shift+Down move down
-bindsym $super+Shift+Up move up
+bindsym $super+Shift+Left  move left
+bindsym $super+Shift+Down  move down
+bindsym $super+Shift+Up    move up
 bindsym $super+Shift+Right move right
 
 # split in horizontal orientation
@@ -81,24 +78,6 @@ bindsym $super+space floating toggle
 # change focus between tiling / floating windows
 bindsym $super+Shift+space focus mode_toggle
 
-# switch to workspace
-bindsym $alt+Control+Right workspace next
-bindsym $alt+Control+Left workspace prev
-bindsym $super+1 workspace 1
-bindsym $super+2 workspace 2
-bindsym $super+3 workspace 3
-bindsym $super+4 workspace 4
-bindsym $super+5 workspace 5
-bindsym $super+6 workspace 6
-
-# move focused container to workspace
-bindsym $super+Shift+1 move container to workspace 1
-bindsym $super+Shift+2 move container to workspace 2
-bindsym $super+Shift+3 move container to workspace 3
-bindsym $super+Shift+4 move container to workspace 4
-bindsym $super+Shift+5 move container to workspace 5
-bindsym $super+Shift+6 move container to workspace 6
-
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
 
@@ -106,19 +85,17 @@ bindsym $super+Shift+r restart
 bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
 
 # resize window
-bindsym $super+Control+Shift+Right resize shrink width 1 px or 1 ppt
-bindsym $super+Control+Shift+Down resize grow height 1 px or 1 ppt
-bindsym $super+Control+Shift+Up resize shrink height 1 px or 1 ppt
-bindsym $super+Control+Shift+Left resize grow width 1 px or 1 ppt
+bindsym $super+Control+Shift+Right resize shrink width  1 px or 1 ppt
+bindsym $super+Control+Shift+Down  resize grow   height 1 px or 1 ppt
+bindsym $super+Control+Shift+Up    resize shrink height 1 px or 1 ppt
+bindsym $super+Control+Shift+Left  resize grow   width  1 px or 1 ppt
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+set $mode_display (y) HDMI ON, (n) HDMI OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
-    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
-    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
-    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI-1-2 --right-of eDP-1-1 --auto, mode "default"
+    bindsym n exec --no-startup-id xrandr --output HDMI-1-2 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -129,36 +106,86 @@ bindsym $super+x mode "$mode_display"
 
 # panel
 bar {
-	colors {
+    colors {
         background #151515
         statusline #151515
-        separator #4b5262
+        separator #683b3b
 
-		# colour of border, background, and text
-        focused_workspace	#151515	#bf616a	#d8dee8
-        active_workspace	#151515	#151515	#d8dee8
-        inactive_workspace	#151515	#151515	#d8dee8
-        urgent_workspace	#151515	#ebcb8b	#151515
+        # colour           border,  background, and text
+        focused_workspace  #151515    #683b3b    #eeeeee
+        active_workspace   #151515    #333333    #d8dee8
+        inactive_workspace #151515    #333333    #d8dee8
+        urgent_workspace   #151515    #ebcb8b    #151515
     }
         status_command i3status
 }
 
+# workspace variable
+set $w1 "1 cmd"
+set $w2 "2 msg"
+set $w3 "3 dev"
+set $w4 "4 web"
+set $w5 5
+set $w6 6
+set $w7 7
+set $w8 8
+set $w9 9
+set $w10 10
+
+# switch to workspace
+bindsym $alt+Control+Right workspace next
+bindsym $alt+Control+Left  workspace prev
+
+bindsym $super+ampersand  workspace number $w1
+bindsym $super+eacute     workspace number $w2
+bindsym $super+quotedbl   workspace number $w3
+bindsym $super+apostrophe workspace number $w4
+bindsym $super+parenleft  workspace number $w5
+bindsym $super+minus      workspace number $w6
+bindsym $super+egrave     workspace number $w7
+bindsym $super+underscore workspace number $w8
+bindsym $super+ccedilla   workspace number $w9
+bindsym $super+agrave     workspace number $w10
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace number $w1
+bindsym $super+Shift+2 move container to workspace number $w2
+bindsym $super+Shift+3 move container to workspace number $w3
+bindsym $super+Shift+4 move container to workspace number $w4
+bindsym $super+Shift+5 move container to workspace number $w5
+bindsym $super+Shift+6 move container to workspace number $w6
+bindsym $super+Shift+7 move container to workspace number $w7
+bindsym $super+Shift+8 move container to workspace number $w8
+bindsym $super+Shift+9 move container to workspace number $w9
+bindsym $super+Shift+0 move container to workspace number w10
+
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 4
-#assign [class=URxvt] 1
-#assign [class=Firefox|Transmission-gtk] 2
-#assign [class=Thunar|File-roller] 3
-#assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
-#assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
-#assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
-#for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
-#for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
-#for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
-# colour of border, background, text, indicator, and child_border
-client.focused			#bf616a #151515 #d8dee8 #e09525 #ac4142
-client.focused_inactive	#151515 #151515 #d8dee8 #151515 #151515
-client.unfocused		#151515 #151515 #d8dee8 #151515 #151515
-client.urgent			#151515 #151515 #d8dee8 #151515 #151515
-client.placeholder		#151515 #151515 #d8dee8 #151515 #151515
-client.background		#151515
+# force a window on a named workspace
+assign [class=URxvt] $w1
+assign [class=spotify|slack] $w2
+assign [class=jetbrains-phpstorm] $w3
+assign [class=google-chrome] $w4
+
+for_window [class=Pavucontrol] floating enable
+for_window [class=Pavucontrol] focus
+
+# monitor assign
+set $monitor_principal eDP-1-1
+set $monitor_external HDMI-1-2
+
+# Bind workspaces to monitors
+workspace $w1 output $monitor_principal
+workspace $w2 output $monitor_principal
+
+workspace $w3 output $monitor_external
+workspace $w4 output $monitor_external
+
+# colour of border, background, text, indicator, and child_borderg
+client.focused          #bf616a #151515 #d8dee8 #593535 #505050
+client.focused_inactive #151515 #151515 #d8dee8 #151515 #151515
+client.unfocused        #151515 #151515 #d8dee8 #151515 #151515
+client.urgent           #151515 #151515 #d8dee8 #151515 #151515
+client.placeholder      #151515 #151515 #d8dee8 #151515 #151515
+client.background       #151515
