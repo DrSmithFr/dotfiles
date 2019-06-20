@@ -18,7 +18,8 @@ exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id numlockx on
 
 # start a terminal
-bindsym $super+Return exec rxvt
+bindsym $super+Return exec terminator
+bindsym $super+Shift+Return exec rxvt
 
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
@@ -210,8 +211,8 @@ set $w5 5
 set $w6 6
 set $w7 7
 set $w8 8
-set $w9 9
-set $w10 "10: music"
+set $w9 "9: music"
+set $w10 "0: process"
 
 # switch to workspace
 bindsym $alt+Control+Right workspace next
@@ -244,16 +245,30 @@ bindsym $super+Shift+9 move container to workspace number $w9
 bindsym $super+Shift+0 move container to workspace number $w10
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 3
 
 # force a window on a named workspace
-assign [class=slack] $w2
-assign [class=jetbrains-phpstorm] $w3
-assign [class=google-chrome] $w4
-assign [class=spotify|Sportify] $w10
+assign [class=Urxvt] $w1
+assign [class=slack|Slack] $w2
 
-for_window [class=Pavucontrol] floating enable
+assign [class=jetbrains-phpstorm] $w3
+for_window [class=jetbrains-phpstorm] border none
+
+assign [window_role="browser"] $w4
+for_window [window_role="browser"] focus border none
+for_window [class=google-chrome|Google-chrome] border none
+
+assign [class=spotify|Sportify] $w9
+for_window [class=spotify|Sportify] border none
+
+assign [class=x-terminal-emulator|X-terminal-emulator] $w10
+for_window [class=x-terminal-emulator|X-terminal-emulator] focus
+
+for_window [class=Pavucontrol] floating enable resize 640 480
 for_window [class=Pavucontrol] focus
+
+for_window [class=terminator|Terminator] floating enable border 1pixel resize 640 480
+for_window [class=terminator|Terminator] focus
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel
