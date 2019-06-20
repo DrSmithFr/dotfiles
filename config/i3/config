@@ -38,8 +38,8 @@ bindsym $super+z layout toggle tabbed
 bindsym $super+e layout toggle default
 
 # music control
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse set Master '5%+' unmute"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse set Master '5%-' unmute"
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
 bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
@@ -247,7 +247,6 @@ bindsym $super+Shift+0 move container to workspace number $w10
 for_window [class=".*"] border pixel 4
 
 # force a window on a named workspace
-assign [class=URxvt] $w1
 assign [class=slack] $w2
 assign [class=jetbrains-phpstorm] $w3
 assign [class=google-chrome] $w4
