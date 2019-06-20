@@ -29,7 +29,6 @@ bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show win
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
-bindsym Control+$alt+k exec i3lock -c 151515 -i ~/.wallpaper.jpg
 bindsym $super+Shift+F1 exec google-chrome
 bindsym $super+Shift+F2 exec nemo
 
@@ -105,16 +104,16 @@ bindsym $super+x mode "$mode_display"
 
 set $mode_power (l)ock (s)leep (h)ybernate (r)eboot (p)oweroff (e)xit-i3
 mode "$mode_power" {
-        bindsym l exec ~/.i3/bin/i3lock.sh, mode "default"
-        bindsym s exec ~/.i3/bin/i3lock.sh, systemctl suspend, mode "default"
-        bindsym h exec ~/.i3/bin/i3lock.sh, systemctl hibernate, mode "default"
+        bindsym l exec i3lock -c 151515, mode "default"
+        bindsym s exec i3lock -c 151515 && systemctl suspend, mode "default"
+        bindsym h exec i3lock -c 151515 && systemctl hibernate, mode "default"
         bindsym p exec systemctl poweroff, mode "default"
         bindsym r exec systemctl reboot, mode "default"
         bindsym e exec --no-startup-id i3-msg exit, mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $super+Shift+e mode $mode_power
+bindsym Control+$alt+k mode $mode_power
 
 # mouse mode
 mode "mouse" {
