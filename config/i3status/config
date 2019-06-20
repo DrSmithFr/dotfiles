@@ -46,7 +46,7 @@ ethernet enp1s0 {
 }
 
 wireless wlp2s0 {
-        format_up = "<span background='#683b3b' color='#ccc'>  %essid </span>"
+        format_up = "<span background='#683b3b' color='#ccc'>  %ip </span>"
         format_down = "<span color='#757575'>  Disconnected </span>"
 }
 
