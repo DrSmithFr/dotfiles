@@ -271,3 +271,6 @@ workspace $w2 output $monitor_principal
 
 workspace $w3 output $monitor_external
 workspace $w4 output $monitor_external
+
+# force workspace 1 as default
+exec i3-msg workspace $w1
