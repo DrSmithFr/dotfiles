@@ -13,9 +13,13 @@ exec --no-startup-id hsetroot -full ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id nvidia-settings --load-config-only
-exec --no-startup-id slack -u
-exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id numlockx on
+
+exec --no-startup-id nm-applet --sm-disable
+exec --no-startup-id urxvt
+exec --no-startup-id google-chrome
+exec --no-startup-id slack
+exec --no-startup-id messengerfordesktop
 
 # start a terminal
 bindsym $super+Return exec terminator
@@ -249,14 +253,16 @@ for_window [class=".*"] border pixel 3
 
 # force a window on a named workspace
 assign [class=Urxvt] $w1
+
 assign [class=slack|Slack] $w2
+assign [window_role="browser-window"] $w2
 
 assign [class=jetbrains-phpstorm] $w3
-for_window [class=jetbrains-phpstorm] border none
+for_window [class=jetbrains-phpstorm] border none layout tabbed
 
 assign [window_role="browser"] $w4
-for_window [window_role="browser"] focus border none
-for_window [class=google-chrome|Google-chrome] border none
+for_window [window_role="browser"] focus border none layout tabbed
+for_window [class=google-chrome|Google-chrome] border none layout tabbed
 
 assign [class=spotify|Sportify] $w9
 for_window [class=spotify|Sportify] border none
