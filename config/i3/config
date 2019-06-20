@@ -3,18 +3,19 @@ set $super Mod4
 set $alt Mod1
 
 # set font
-font pango: Noto Sans 8
+font pango: DejaVu Sans Mono 10
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
 #autostart
-exec --no-startup-id hsetroot -extend ~/.wallpaper.jpg
+exec --no-startup-id hsetroot -full ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id slack -u
 exec --no-startup-id nm-applet --sm-disable
+exec --no-startup-id numlockx on
 
 # start a terminal
 bindsym $super+Return exec rxvt
@@ -32,10 +33,13 @@ bindsym Control+$alt+k exec i3lock -c 151515 -i ~/.wallpaper.jpg
 bindsym $super+Shift+b exec google-chrome
 bindsym $super+Shift+f exec nemo
 
-#change volume
-#bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
-#bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-#bindsym XF86AudioMute exec amixer set Master toggle
+# changer le mode d'affichage des containers:
+# stacked: fenêtres maximisées, barres de titre des fenetres ouvertes empilées,
+# tabbed: fenêtres maximisées, barres de titre des fenetres ouvertes les unes à côtés des autres, comme des onglets,
+# default: tiling (pavage).
+bindsym $super+s layout toggle stacking
+bindsym $super+z layout toggle tabbed
+bindsym $super+e layout toggle default
 
 # music control
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
@@ -70,9 +74,6 @@ bindsym $super+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $super+f fullscreen toggle
-
-# change container layout split
-bindsym $super+s layout toggle split
 
 # toggle tiling / floating
 bindsym $super+space floating toggle
@@ -109,6 +110,22 @@ bindsym $super+Control+Shift+Right resize shrink width 1 px or 1 ppt
 bindsym $super+Control+Shift+Down resize grow height 1 px or 1 ppt
 bindsym $super+Control+Shift+Up resize shrink height 1 px or 1 ppt
 bindsym $super+Control+Shift+Left resize grow width 1 px or 1 ppt
+
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $super+x mode "$mode_display"
 
 # panel
 bar {

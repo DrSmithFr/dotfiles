@@ -12,49 +12,54 @@ order += "load"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "disk /home"
+order += "disk /data"
 order += "ethernet enp1s0"
 order += "wireless wlp2s0"
-order += "volume master"
-order += "battery 0"
 order += "tztime local"
+order += "battery 0"
+order += "volume master"
 
 load {
-        format = "<span background='#f59335'>  %5min Load </span>"
+        format = "<span color='#eee'>  %1min </span>"
 }
 
 cpu_temperature 0 {
-        format = "<span background='#bf616a'>  %degrees °C </span>"
+        format = "<span color='#eee'>  %degrees°C </span>"
         path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 disk "/" {
-        format = "<span background='#fec7cd'>  %free Free </span>"
+        format = "<span color='#eee'>  %free </span>"
 }
 
 disk "/home" {
-        format = "<span background='#a1d569'>  %free Free </span>"
+        format = "<span color='#eee'>  %free </span>"
+}
+
+disk "/data" {
+	format = "<span color='#eee'>  %free </span>"
 }
 
 ethernet enp1s0 {
-        format_up = "<span background='#88c0d0'>  %ip </span>"
-        format_down = "<span background='#88c0d0'>  Disconnected </span>"
+        format_up = "<span background='#eee' color='#151515'>  %ip </span>"
+        format_down = "<span color='#eee'>  Disconnected </span>"
 }
 
 wireless wlp2s0 {
-        format_up = "<span background='#b48ead'>  %essid </span>"
-        format_down = "<span background='#b48ead'>  Disconnected </span>"
+        format_up = "<span background='#eee'>  %essid </span>"
+        format_down = "<span color='#eee'>  Disconnected </span>"
 }
 
 volume master {
-        format = "<span background='#ebcb8b'>  %volume </span>"
-        format_muted = "<span background='#ebcb8b'>  Muted </span>"
+        format = "<span background='#eee'>  %volume </span>"
+        format_muted = "<span color='#eee'>  </span>"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
 
 battery 0 {
-        format = "<span background='#a3be8c'>  %status %percentage </span>"
+        format = "<span color='#eee'>  %percentage </span>"
         format_down = "No Battery"
         status_chr = "Charging"
         status_bat = "Battery"
@@ -65,7 +70,7 @@ battery 0 {
 }
 
 tztime local {
-		format = "<span background='#81a1c1'> %time </span>"
-		format_time = " %a %-d %b %H:%M"
+		format = "<span color='#eee'> %time </span>"
+		format_time = "%d/%m/%y %H:%M:%S"
 }
 
