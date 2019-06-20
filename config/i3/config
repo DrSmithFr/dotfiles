@@ -89,12 +89,27 @@ bindsym $super+Control+Shift+Down  resize grow   height 1 px or 1 ppt
 bindsym $super+Control+Shift+Up    resize shrink height 1 px or 1 ppt
 bindsym $super+Control+Shift+Left  resize grow   width  1 px or 1 ppt
 
-## Manual management of external displays
-# Set the shortcuts and what they do
-set $mode_display (y) HDMI ON, (n) HDMI OFF
+#
+# Ctrl+Alt+Del Quick settings
+#
+set $mode_menu Menu: Display, Mouse, Power
+mode "$mode_menu" {
+        bindsym d mode "$mode_display"
+        bindsym m mode "$mode_mouse"
+        bindsym p mode "$mode_power"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym Control+$alt+Delete mode "$mode_menu"
+
+#
+# HDMI management
+#
+set $mode_display HDMI: Enable, Disable
 mode "$mode_display" {
-    bindsym y exec --no-startup-id xrandr --output HDMI-1-2 --right-of eDP-1-1 --auto, mode "default"
-    bindsym n exec --no-startup-id xrandr --output HDMI-1-2 --off, mode "default"
+    bindsym e exec --no-startup-id xrandr --output HDMI-1-2 --right-of eDP-1-1 --auto, mode "default"
+    bindsym d exec --no-startup-id xrandr --output HDMI-1-2 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -102,20 +117,26 @@ mode "$mode_display" {
 }
 bindsym $super+x mode "$mode_display"
 
-set $mode_power (l)ock (d)isconnect (p)oweroff (r)eboot
+#
+# Power management
+#
+set $mode_power POWER: Lock, Disconnect, Off, Reboot
 mode "$mode_power" {
         bindsym l exec i3lock -c 151515, mode "default"
         bindsym d exec --no-startup-id i3-msg exit, mode "default"
-        bindsym p exec systemctl poweroff, mode "default"
+        bindsym o exec systemctl poweroff, mode "default"
         bindsym r exec systemctl reboot, mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym Control+$alt+k mode $mode_power
+bindsym Control+$alt+k mode "$mode_power"
 
-# mouse mode
-mode "mouse" {
+#
+# Mouse management
+#
+set $mode_mouse MOUSE:
+mode "$mode_mouse" {
         # normal
         bindsym Up exec xdotool mousemove_relative -- 0 -30
         bindsym Down exec xdotool mousemove_relative -- 0 30
@@ -138,8 +159,10 @@ mode "mouse" {
         bindsym s exec xdotool click 2 # middle
         bindsym k exec xdotool click 3 # right
         bindsym j exec xdotool click 1 # left
+
         bindsym h exec xdotool click 4 # wheel up
         bindsym l exec xdotool click 5 # wheel down
+
         bindsym Shift+j exec xdotool click 1 # shift + left = mark
         bindsym Control+j exec xdotool click 1 # control + left
         bindsym Control+h exec xdotool click 4 # control + wheel up = zoom
@@ -148,9 +171,11 @@ mode "mouse" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $super+m mode "mouse"
+bindsym $super+m mode "$mode_mouse"
 
-# panel
+#
+# Style
+#
 bar {
     colors {
         background #151515
@@ -166,7 +191,17 @@ bar {
         status_command i3status
 }
 
-# workspace variable
+# colour of border, background, text, indicator, and child_borderg
+client.focused          #bf616a #151515 #d8dee8 #593535 #505050
+client.focused_inactive #151515 #151515 #d8dee8 #151515 #151515
+client.unfocused        #151515 #151515 #d8dee8 #151515 #151515
+client.urgent           #151515 #151515 #d8dee8 #151515 #151515
+client.placeholder      #151515 #151515 #d8dee8 #151515 #151515
+client.background       #151515
+
+#
+# Workspace related
+#
 set $w1 "1: cmd"
 set $w2 "2: msg"
 set $w3 "3: dev"
@@ -236,11 +271,3 @@ workspace $w2 output $monitor_principal
 
 workspace $w3 output $monitor_external
 workspace $w4 output $monitor_external
-
-# colour of border, background, text, indicator, and child_borderg
-client.focused          #bf616a #151515 #d8dee8 #593535 #505050
-client.focused_inactive #151515 #151515 #d8dee8 #151515 #151515
-client.unfocused        #151515 #151515 #d8dee8 #151515 #151515
-client.urgent           #151515 #151515 #d8dee8 #151515 #151515
-client.placeholder      #151515 #151515 #d8dee8 #151515 #151515
-client.background       #151515
