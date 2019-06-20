@@ -102,14 +102,13 @@ mode "$mode_display" {
 }
 bindsym $super+x mode "$mode_display"
 
-set $mode_power (l)ock (s)leep (h)ybernate (r)eboot (p)oweroff (e)xit-i3
+set $mode_power (l)ock (d)isconnect (p)oweroff (r)eboot
 mode "$mode_power" {
         bindsym l exec i3lock -c 151515, mode "default"
-        bindsym s exec i3lock -c 151515 && systemctl suspend, mode "default"
-        bindsym h exec i3lock -c 151515 && systemctl hibernate, mode "default"
+        bindsym d exec --no-startup-id i3-msg exit, mode "default"
         bindsym p exec systemctl poweroff, mode "default"
         bindsym r exec systemctl reboot, mode "default"
-        bindsym e exec --no-startup-id i3-msg exit, mode "default"
+
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
