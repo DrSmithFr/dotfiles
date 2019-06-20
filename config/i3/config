@@ -16,13 +16,13 @@ exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id numlockx on
 
 exec --no-startup-id nm-applet --sm-disable
-exec --no-startup-id urxvt
 exec --no-startup-id google-chrome
+exec --no-startup-id spotify
 exec --no-startup-id slack
 exec --no-startup-id messengerfordesktop
 
 # start a terminal
-bindsym $super+Return exec terminator
+bindsym $super+Return exec urxvt
 bindsym $super+Shift+Return exec rxvt
 
 # start dmenu (a program launcher)
@@ -89,19 +89,19 @@ bindsym $super+Shift+r restart
 bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
 
 # resize window
-bindsym $super+Control+Shift+Right resize shrink width  1 px or 1 ppt
-bindsym $super+Control+Shift+Down  resize grow   height 1 px or 1 ppt
-bindsym $super+Control+Shift+Up    resize shrink height 1 px or 1 ppt
-bindsym $super+Control+Shift+Left  resize grow   width  1 px or 1 ppt
+bindsym $super+Control+Shift+Right resize shrink width  10 px or 10 ppt
+bindsym $super+Control+Shift+Down  resize grow   height 10 px or 10 ppt
+bindsym $super+Control+Shift+Up    resize shrink height 10 px or 10 ppt
+bindsym $super+Control+Shift+Left  resize grow   width  10 px or 10 ppt
 
 #
 # Ctrl+Alt+Del Quick settings
 #
-set $mode_menu Menu: Display, Mouse, Power
+set $mode_menu Menu: (1) display, (2) mouse, (3) power
 mode "$mode_menu" {
-        bindsym d mode "$mode_display"
-        bindsym m mode "$mode_mouse"
-        bindsym p mode "$mode_power"
+        bindsym 1 mode "$mode_display"
+        bindsym 2 mode "$mode_mouse"
+        bindsym 3 mode "$mode_power"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -125,12 +125,12 @@ bindsym $super+x mode "$mode_display"
 #
 # Power management
 #
-set $mode_power POWER: Lock, Disconnect, Off, Reboot
+set $mode_power Power: (1) Lock, (2) Disconnect, (3) Off, (4) Reboot
 mode "$mode_power" {
-        bindsym l exec i3lock -c 151515, mode "default"
-        bindsym d exec --no-startup-id i3-msg exit, mode "default"
-        bindsym o exec systemctl poweroff, mode "default"
-        bindsym r exec systemctl reboot, mode "default"
+        bindsym 1 exec i3lock -c 151515, mode "default"
+        bindsym 2 exec --no-startup-id i3-msg exit, mode "default"
+        bindsym 3 exec systemctl poweroff, mode "default"
+        bindsym 4 exec systemctl reboot, mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -207,16 +207,16 @@ client.background       #151515
 #
 # Workspace related
 #
-set $w1 "1: cmd"
-set $w2 "2: msg"
+set $w1 "1: web"
+set $w2 "2: social"
 set $w3 "3: dev"
-set $w4 "4: web"
+set $w4 "4: other"
 set $w5 5
 set $w6 6
 set $w7 7
-set $w8 8
+set $w8 "8: social"
 set $w9 "9: music"
-set $w10 "0: process"
+set $w0 "0: htop"
 
 # switch to workspace
 bindsym $alt+Control+Right workspace next
@@ -234,7 +234,7 @@ bindsym $super+minus      workspace number $w6
 bindsym $super+egrave     workspace number $w7
 bindsym $super+underscore workspace number $w8
 bindsym $super+ccedilla   workspace number $w9
-bindsym $super+agrave     workspace number $w10
+bindsym $super+agrave     workspace number $w0
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace number $w1
@@ -246,13 +246,10 @@ bindsym $super+Shift+6 move container to workspace number $w6
 bindsym $super+Shift+7 move container to workspace number $w7
 bindsym $super+Shift+8 move container to workspace number $w8
 bindsym $super+Shift+9 move container to workspace number $w9
-bindsym $super+Shift+0 move container to workspace number $w10
+bindsym $super+Shift+0 move container to workspace number $w0
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 3
-
-# force a window on a named workspace
-assign [class=Urxvt] $w1
 
 assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
@@ -260,26 +257,26 @@ assign [window_role="browser-window"] $w2
 assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout tabbed
 
-assign [window_role="browser"] $w4
+assign [window_role="browser"] $w1
 for_window [window_role="browser"] focus border none layout tabbed
 for_window [class=google-chrome|Google-chrome] border none layout tabbed
 
 assign [class=spotify|Sportify] $w9
 for_window [class=spotify|Sportify] border none
 
-assign [class=x-terminal-emulator|X-terminal-emulator] $w10
+assign [class=x-terminal-emulator|X-terminal-emulator] $w0
 for_window [class=x-terminal-emulator|X-terminal-emulator] focus
 
-for_window [class=Pavucontrol] floating enable resize 640 480
+for_window [class=Pavucontrol] floating enable resize set 640 480
 for_window [class=Pavucontrol] focus
 
-for_window [class=terminator|Terminator] floating enable border 1pixel resize 640 480
-for_window [class=terminator|Terminator] focus
+for_window [class=rxvt|Rxvt] floating enable border 1pixel resize set 640 480
+for_window [class=rxvt|Rxvt] focus
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel
 for_window [class="update-manager"] floating enable border 1pixel
-for_window [class="gnome-calculator"] floating enable border 1pixel resize 640 480
+for_window [class="gnome-calculator"] floating enable border 1pixel resize set 640 480
 
 # monitor assign
 set $monitor_principal eDP-1-1
