@@ -129,12 +129,15 @@ set $w5 5
 set $w6 6
 set $w7 7
 set $w8 8
-set $w9 9
+set $w9 "9 music"
 set $w10 10
 
 # switch to workspace
 bindsym $alt+Control+Right workspace next
 bindsym $alt+Control+Left  workspace prev
+
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
 
 bindsym $super+ampersand  workspace number $w1
 bindsym $super+eacute     workspace number $w2
@@ -164,9 +167,10 @@ for_window [class=".*"] border pixel 4
 
 # force a window on a named workspace
 assign [class=URxvt] $w1
-assign [class=spotify|slack] $w2
+assign [class=slack] $w2
 assign [class=jetbrains-phpstorm] $w3
 assign [class=google-chrome] $w4
+assign [class=spotify|Sportify] $w9
 
 for_window [class=Pavucontrol] floating enable
 for_window [class=Pavucontrol] focus

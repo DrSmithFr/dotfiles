@@ -47,3 +47,6 @@ symbolic-links:
 copy-assets:
 	cp -r fonts ~/.fonts
 	cp wallpaper.jpg ~/.wallpaper.jpg
+
+themes:
+	lxappearance
