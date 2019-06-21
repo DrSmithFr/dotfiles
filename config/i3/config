@@ -9,7 +9,7 @@ font pango: DejaVu Sans Mono 10
 floating_modifier $super
 
 #autostart
-exec --no-startup-id hsetroot -full ~/.wallpaper.jpg
+exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id nvidia-settings --load-config-only
@@ -23,7 +23,7 @@ exec --no-startup-id messengerfordesktop
 
 # start a terminal
 bindsym $super+Return exec urxvt
-bindsym $super+Shift+Return exec rxvt
+bindsym $super+Shift+Return exec terminator
 
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
@@ -111,10 +111,10 @@ bindsym Control+$alt+Delete mode "$mode_menu"
 #
 # HDMI management
 #
-set $mode_display HDMI: Enable, Disable
+set $mode_display HDMI: (1) enable, (2) disable
 mode "$mode_display" {
-    bindsym e exec --no-startup-id xrandr --output HDMI-1-2 --right-of eDP-1-1 --auto, mode "default"
-    bindsym d exec --no-startup-id xrandr --output HDMI-1-2 --off, mode "default"
+    bindsym 1 exec --no-startup-id xrandr --output HDMI-1-2 --right-of eDP-1-1 --auto, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output HDMI-1-2 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -127,7 +127,7 @@ bindsym $super+x mode "$mode_display"
 #
 set $mode_power Power: (1) Lock, (2) Disconnect, (3) Off, (4) Reboot
 mode "$mode_power" {
-        bindsym 1 exec i3lock -c 151515, mode "default"
+        bindsym 1 exec i3lock-fancy --text="", mode "default"
         bindsym 2 exec --no-startup-id i3-msg exit, mode "default"
         bindsym 3 exec systemctl poweroff, mode "default"
         bindsym 4 exec systemctl reboot, mode "default"
@@ -135,7 +135,7 @@ mode "$mode_power" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym Control+$alt+k mode "$mode_power"
+bindsym Control+$alt+k exec i3lock-fancy --text="", mode "default"
 
 #
 # Mouse management
@@ -197,9 +197,9 @@ bar {
 }
 
 # colour of border, background, text, indicator, and child_borderg
-client.focused          #bf616a #151515 #d8dee8 #593535 #505050
-client.focused_inactive #151515 #151515 #d8dee8 #151515 #151515
-client.unfocused        #151515 #151515 #d8dee8 #151515 #151515
+client.focused          #683b3b #683b3b #eeeeee #593535 #505050
+client.focused_inactive #151515 #151515 #aaaaaa #151515 #151515
+client.unfocused        #151515 #151515 #aaaaaa #151515 #151515
 client.urgent           #151515 #151515 #d8dee8 #151515 #151515
 client.placeholder      #151515 #151515 #d8dee8 #151515 #151515
 client.background       #151515
@@ -258,8 +258,13 @@ assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout tabbed
 
 assign [window_role="browser"] $w1
-for_window [window_role="browser"] focus border none layout tabbed
-for_window [class=google-chrome|Google-chrome] border none layout tabbed
+for_window [window_role="browser"] border none
+for_window [window_role="browser"] layout tabbed
+for_window [window_role="browser"] focus
+
+assign [class=google-chrome|Google-chrome] $w1
+for_window [class=google-chrome|Google-chrome] border none
+for_window [class=google-chrome|Google-chrome] layout tabbed
 
 assign [class=spotify|Sportify] $w9
 for_window [class=spotify|Sportify] border none
@@ -267,11 +272,15 @@ for_window [class=spotify|Sportify] border none
 assign [class=x-terminal-emulator|X-terminal-emulator] $w0
 for_window [class=x-terminal-emulator|X-terminal-emulator] focus
 
-for_window [class=Pavucontrol] floating enable resize set 640 480
+for_window [class=Pavucontrol] floating enable
+for_window [class=Pavucontrol] resize set 640 480
 for_window [class=Pavucontrol] focus
 
-for_window [class=rxvt|Rxvt] floating enable border 1pixel resize set 640 480
-for_window [class=rxvt|Rxvt] focus
+for_window [class=urxvt|URxvt$] floating enable
+for_window [class=urxvt|URxvt$] border 1pixel
+for_window [class=urxvt|URxvt$] resize set 1500 800
+for_window [class=urxvt|URxvt$] move position center
+for_window [class=urxvt|URxvt$] focus
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel

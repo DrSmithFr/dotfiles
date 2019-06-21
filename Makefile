@@ -50,3 +50,10 @@ copy-assets:
 
 themes:
 	lxappearance
+
+plugins-clones:
+	mkdir plugins
+	git clone https://github.com/meskarune/i3lock-fancy.git $(ROOT_DIR)/plugins/i3lock-fancy
+
+plugins-install:
+	cd $(ROOT_DIR)/plugins/i3lock-fancy && sudo make install
