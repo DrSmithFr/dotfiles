@@ -20,6 +20,7 @@ exec --no-startup-id google-chrome
 exec --no-startup-id spotify
 exec --no-startup-id slack
 exec --no-startup-id messengerfordesktop
+exec --no-startup-id redshift
 
 # start a terminal
 bindsym $super+Return exec urxvt
@@ -200,7 +201,7 @@ bar {
 client.focused          #683b3b #683b3b #eeeeee #593535 #505050
 client.focused_inactive #151515 #151515 #aaaaaa #151515 #151515
 client.unfocused        #151515 #151515 #aaaaaa #151515 #151515
-client.urgent           #151515 #151515 #d8dee8 #151515 #151515
+client.urgent           #151515 #ebcb8b #333333 #151515 #151515
 client.placeholder      #151515 #151515 #d8dee8 #151515 #151515
 client.background       #151515
 
