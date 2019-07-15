@@ -22,7 +22,7 @@ install-deps:
 	sudo apt install \
 		i3 i3-wm dunst i3lock i3status suckless-tools xclip \
 		compton hsetroot rxvt-unicode xsel rofi fonts-noto fonts-mplus \
-		xsettingsd lxappearance scrot viewnior \
+		xsettingsd lxappearance scrot viewnior xbacklight \
 
 clear-configuration:
 	rm -f ~/.Xresources

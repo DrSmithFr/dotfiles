@@ -52,6 +52,13 @@ bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym XF86AudioStop exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
 
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
 # kill focused window
 bindsym $super+c kill
 bindsym $alt+F4 kill
@@ -256,16 +263,16 @@ assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
 
 assign [class=jetbrains-phpstorm] $w3
-for_window [class=jetbrains-phpstorm] border none layout tabbed
+for_window [class=jetbrains-phpstorm] border none layout stacking
 
 assign [window_role="browser"] $w1
 for_window [window_role="browser"] border none
-for_window [window_role="browser"] layout tabbed
+for_window [window_role="browser"] layout stacking
 for_window [window_role="browser"] focus
 
 assign [class=google-chrome|Google-chrome] $w1
 for_window [class=google-chrome|Google-chrome] border none
-for_window [class=google-chrome|Google-chrome] layout tabbed
+for_window [class=google-chrome|Google-chrome] layout stacking
 
 assign [class=spotify|Sportify] $w9
 for_window [class=spotify|Sportify] border none
