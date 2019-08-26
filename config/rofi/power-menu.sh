@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) Lock\n(2) Logout\n(3) Shutdown\n(4) Reboot"
+OPTIONS="(1) Lock\n(2) Logout\n(3) Shutdown\n(4) Reboot"
 
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\r\n\t'`
 if [ "$@" ]

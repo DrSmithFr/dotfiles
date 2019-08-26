@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) Display\n(2) Kill\n(3) Power"
+OPTIONS="(1) Display\n(2) Kill\n(3) Power\n(4) Bluetooth"
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\n\t'`
 
 selected=$@
@@ -19,6 +19,10 @@ then
     3|*Power)
       pkill rofi
       rofi -modi Power:$HOME/.config/rofi/power-menu.sh -show Power &
+      ;;
+    3|*Bluetooth)
+      pkill rofi
+      blueman-manager &
       ;;
   esac
 else
