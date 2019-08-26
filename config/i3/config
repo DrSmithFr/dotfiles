@@ -18,20 +18,22 @@ exec --no-startup-id numlockx on
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id google-chrome
 exec --no-startup-id spotify
-exec --no-startup-id slack
-exec --no-startup-id messengerfordesktop
+exec --no-startup-id franz
 exec --no-startup-id redshift
 
 # start a terminal
-bindsym $super+Return exec urxvt
-bindsym $super+Shift+Return exec terminator
+bindsym $super+Return exec terminator
+bindsym $super+Shift+Return exec urxvt
+
+# Power
+bindsym XF86PowerOff exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
 
 # start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'DejaVu Sans Mono:size=10'"
+bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 2 -font 'DejaVu Sans Mono 10'
 
 # WORKSPACETAB
-bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show window -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show window -sidebar-mode -columns 2 -font 'DejaVu Sans Mono 10'
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
@@ -109,12 +111,12 @@ set $mode_menu Menu: (1) display, (2) mouse, (3) power
 mode "$mode_menu" {
         bindsym 1 mode "$mode_display"
         bindsym 2 mode "$mode_mouse"
-        bindsym 3 mode "$mode_power"
+        bindsym 3 exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym Control+$alt+Delete mode "$mode_menu"
+bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh
 
 #
 # HDMI management
@@ -193,11 +195,11 @@ bar {
     colors {
         background #151515
         statusline #151515
-        separator #683b3b
+        separator #ffffff
 
         # colour           border,  background, and text
-        focused_workspace  #151515    #683b3b    #eeeeee
-        active_workspace   #151515    #333333    #d8dee8
+        focused_workspace  #151515    #ffffff    #333333
+        active_workspace   #151515    #333333    #ffffff
         inactive_workspace #151515    #333333    #d8dee8
         urgent_workspace   #151515    #ebcb8b    #151515
     }
@@ -205,7 +207,7 @@ bar {
 }
 
 # colour of border, background, text, indicator, and child_borderg
-client.focused          #683b3b #683b3b #eeeeee #593535 #505050
+client.focused          #ffffff #ffffff #333333 #593535 #505050
 client.focused_inactive #151515 #151515 #aaaaaa #151515 #151515
 client.unfocused        #151515 #151515 #aaaaaa #151515 #151515
 client.urgent           #151515 #ebcb8b #333333 #151515 #151515
@@ -289,6 +291,24 @@ for_window [class=urxvt|URxvt$] border 1pixel
 for_window [class=urxvt|URxvt$] resize set 1500 800
 for_window [class=urxvt|URxvt$] move position center
 for_window [class=urxvt|URxvt$] focus
+
+for_window [class=terminator|Terminator$] floating enable
+for_window [class=terminator|Terminator$] border 1pixel
+for_window [class=terminator|Terminator$] resize set 1500 800
+for_window [class=terminator|Terminator$] move position center
+for_window [class=terminator|Terminator$] focus
+
+for_window [class=nemo|Nemo$] floating enable
+for_window [class=nemo|Nemo$] border 1pixel
+for_window [class=nemo|Nemo$] resize set 1500 800
+for_window [class=nemo|Nemo$] move position center
+for_window [class=nemo|Nemo$] focus
+
+for_window [class=blueman-manager|Blueman-manager] floating enable
+for_window [class=blueman-manager|Blueman-manager] border 1pixel
+for_window [class=blueman-manager|Blueman-manager] resize set 1500 800
+for_window [class=blueman-manager|Blueman-manager] move position center
+for_window [class=blueman-manager|Blueman-manager] focus
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel

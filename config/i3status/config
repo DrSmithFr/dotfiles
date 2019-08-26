@@ -41,17 +41,17 @@ disk "/data" {
 }
 
 ethernet enp1s0 {
-        format_up = "<span background='#683b3b' color='#eee'>  %ip </span>"
+        format_up = "<span background='#fff' color='#333'>  %ip </span>"
         format_down = "<span color='#ccc'>  Disconnected </span>"
 }
 
 wireless wlp2s0 {
-        format_up = "<span background='#683b3b' color='#eee'>  %ip </span>"
+        format_up = "<span background='#fff' color='#333'>  %ip </span>"
         format_down = "<span color='#ccc'>  Disconnected </span>"
 }
 
 volume master {
-        format = "<span background='#683b3b' color='#eee'>  %volume </span>"
+        format = "<span background='#fff' color='#333'>  %volume </span>"
         format_muted = "<span color='#ccc'>  </span>"
         device = "default"
         mixer = "Master"
