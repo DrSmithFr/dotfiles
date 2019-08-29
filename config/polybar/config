@@ -27,8 +27,8 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/main-display-bottom]
+;monitor = ${env:MONITOR:HDMI-2}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -51,7 +51,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = DejaVu Sans Mono:pixelsize=10;1
+font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -128,6 +128,13 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
+
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = social
+ws-icon-3 = code;
+ws-icon-9 = music;
+ws-icon-default = 
 
 [module/i3]
 type = internal/i3

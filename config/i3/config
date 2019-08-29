@@ -9,7 +9,7 @@ font pango: DejaVu Sans Mono 10
 floating_modifier $super
 
 # uncomment to enable polybar
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #autostart
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
@@ -23,6 +23,10 @@ exec --no-startup-id google-chrome
 exec --no-startup-id spotify
 exec --no-startup-id franz
 exec --no-startup-id redshift
+
+# Enable popup during fullscreen
+hide_edge_borders smart
+popup_during_fullscreen smart
 
 # start a terminal
 bindsym $super+Return exec terminator
@@ -226,16 +230,16 @@ client.background       #151515
 #
 # Workspace related
 #
-set $w1 "1: web"
-set $w2 "2: social"
-set $w3 "3: dev"
-set $w4 "4: other"
+set $w1 "1: "
+set $w2 "2: "
+set $w3 "3: "
+set $w4 "4: "
 set $w5 5
 set $w6 6
 set $w7 7
-set $w8 "8: social"
-set $w9 "9: music"
-set $w0 "0: htop"
+set $w8 8
+set $w9 "9: "
+set $w0 "0: "
 
 # switch to workspace
 bindsym $alt+Control+Right workspace next
@@ -278,7 +282,6 @@ for_window [class=jetbrains-phpstorm] border none layout stacking
 
 assign [class=java-lang-Thread] $w3
 for_window [class=java-lang-Thread] floating enable
-for_window [class=java-lang-Thread] resize set 1500 800
 for_window [class=java-lang-Thread] move position center
 for_window [class=java-lang-Thread] border none layout stacking
 
