@@ -284,6 +284,7 @@ for_window [class=google-chrome|Google-chrome] layout stacking
 
 assign [class=spotify|Spotify$] $w9
 for_window [class=spotify|Spotify$] border none
+for_window [class=spotify|Spotify$] move window to workspace $w9
 
 assign [class=x-terminal-emulator|X-terminal-emulator] $w0
 for_window [class=x-terminal-emulator|X-terminal-emulator] focus
