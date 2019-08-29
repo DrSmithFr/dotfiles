@@ -7,15 +7,16 @@ selected=$@
 
 if [ "$selected" ]
 then
-	case $selected in
-		*Enable)
-			xrandr --output HDMI-2 --right-of eDP-1 --auto, mode "default"
-      notify-msg "working"
-			;;
-		*Disable)
-			xrandr --output HDMI-2 --off, mode "default"
-			;;
-	esac
+  case $selected in
+    *Enable)
+      xrandr --output HDMI-2 --right-of eDP-1 --auto
+      notify-msg "HDMI enabled"
+      ;;
+    *Disable)
+      xrandr --output HDMI-2 --off
+      notify-msg "HDMI disabled"
+      ;;
+  esac
 else
-	echo -e $OPTIONS
+  echo -e $OPTIONS
 fi

@@ -25,6 +25,10 @@ exec --no-startup-id redshift
 bindsym $super+Return exec terminator
 bindsym $super+Shift+Return exec urxvt
 
+# disable mouse wheel
+bindsym button4 nop
+bindsym button5 nop
+
 # Power
 bindsym XF86PowerOff exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
 
@@ -192,6 +196,9 @@ bindsym $super+m mode "$mode_mouse"
 # Style
 #
 bar {
+    bindsym button4 nop
+    bindsym button5 nop
+    status_command i3status
     colors {
         background #151515
         statusline #151515
@@ -203,7 +210,6 @@ bar {
         inactive_workspace #151515    #333333    #d8dee8
         urgent_workspace   #151515    #ebcb8b    #151515
     }
-        status_command i3status
 }
 
 # colour of border, background, text, indicator, and child_borderg

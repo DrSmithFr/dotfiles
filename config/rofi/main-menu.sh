@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) Display\n(2) Kill\n(3) Power\n(4) Bluetooth"
+OPTIONS="(1) HDMI\n(2) Kill\n(3) Power\n(4) Bluetooth"
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\n\t'`
 
 selected=$@
@@ -8,9 +8,9 @@ selected=$@
 if [ "$selected" ]
 then
   case $selected in
-    1|*Display)
+    1|*HDMI)
       pkill rofi
-      rofi -modi Display:$HOME/.config/rofi/display-menu.sh -show Display &
+      rofi -modi HDMI:$HOME/.config/rofi/display-menu.sh -show HDMI &
       ;;
     2|*Kill)
       pkill rofi
