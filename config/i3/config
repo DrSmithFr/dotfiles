@@ -8,6 +8,9 @@ font pango: DejaVu Sans Mono 10
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
+# uncomment to enable polybar
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 #autostart
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
