@@ -9,7 +9,7 @@ font pango: DejaVu Sans Mono 10
 floating_modifier $super
 
 # uncomment to enable polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #autostart
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
