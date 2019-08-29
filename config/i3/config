@@ -265,13 +265,19 @@ bindsym $super+Shift+9 move container to workspace number $w9
 bindsym $super+Shift+0 move container to workspace number $w0
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 1
 
 assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
 
 assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout stacking
+
+assign [class=java-lang-Thread] $w3
+for_window [class=java-lang-Thread] floating enable
+for_window [class=java-lang-Thread] resize set 1500 800
+for_window [class=java-lang-Thread] move position center
+for_window [class=java-lang-Thread] border none layout stacking
 
 assign [window_role="browser"] $w1
 for_window [window_role="browser"] border none
