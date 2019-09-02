@@ -11,10 +11,10 @@ floating_modifier $super
 # uncomment to enable polybar
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# disable touchpad by default
-exec_always xinput --disable "ELAN1200:00 04F3:3044 Touchpad"
-
-#autostart
+#
+# Startup commands
+#
+exec --no-startup-id xinput --disable "ELAN1200:00 04F3:3044 Touchpad"
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
@@ -30,6 +30,10 @@ exec --no-startup-id redshift
 # Enable popup during fullscreen
 hide_edge_borders smart
 popup_during_fullscreen smart
+
+#
+# Keys bindings
+#
 
 # start a terminal
 bindsym $super+Return exec terminator
@@ -109,57 +113,11 @@ bindsym $super+Shift+space focus mode_toggle
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
 
-# exit i3
-bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
-
 # resize window
 bindsym $super+Control+Shift+Right resize shrink width  10 px or 10 ppt
 bindsym $super+Control+Shift+Down  resize grow   height 10 px or 10 ppt
 bindsym $super+Control+Shift+Up    resize shrink height 10 px or 10 ppt
 bindsym $super+Control+Shift+Left  resize grow   width  10 px or 10 ppt
-
-#
-# Ctrl+Alt+Del Quick settings
-#
-set $mode_menu Menu: (1) display, (2) mouse, (3) power
-mode "$mode_menu" {
-        bindsym 1 mode "$mode_display"
-        bindsym 2 mode "$mode_mouse"
-        bindsym 3 exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh
-
-#
-# HDMI management
-#
-set $mode_display HDMI: (1) enable, (2) disable
-mode "$mode_display" {
-    bindsym 1 exec --no-startup-id xrandr --output HDMI-2 --right-of eDP-1 --auto, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output HDMI-2 --off, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $super+x mode "$mode_display"
-
-#
-# Power management
-#
-set $mode_power Power: (1) Lock, (2) Disconnect, (3) Off, (4) Reboot
-mode "$mode_power" {
-        bindsym 1 exec i3lock-fancy --text="", mode "default"
-        bindsym 2 exec --no-startup-id i3-msg exit, mode "default"
-        bindsym 3 exec systemctl poweroff, mode "default"
-        bindsym 4 exec systemctl reboot, mode "default"
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym Control+$alt+k exec i3lock-fancy --text="" && amixer -D pulse set Master mute && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && mode "default"
 
 #
 # Mouse management
@@ -203,7 +161,7 @@ mode "$mode_mouse" {
 bindsym $super+m mode "$mode_mouse"
 
 #
-# Style
+# Menu bar and Style
 #
 bar {
     bindsym button4 nop
@@ -274,7 +232,23 @@ bindsym $super+Shift+8 move container to workspace number $w8
 bindsym $super+Shift+9 move container to workspace number $w9
 bindsym $super+Shift+0 move container to workspace number $w0
 
-# window rules, you can find the window class using xprop
+# monitor assign
+set $monitor_principal eDP-1
+set $monitor_external HDMI-2
+
+# Bind workspaces to monitors
+workspace $w1 output $monitor_principal
+workspace $w2 output $monitor_principal
+
+workspace $w3 output $monitor_external
+workspace $w4 output $monitor_external
+
+# force workspace 1 as default
+exec i3-msg workspace $w1
+
+#
+# window rules
+#
 for_window [class=".*"] border pixel 1
 
 assign [class=slack|Slack] $w2
@@ -336,17 +310,3 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel
 for_window [class="update-manager"] floating enable border 1pixel
 for_window [class="gnome-calculator"] floating enable border 1pixel resize set 640 480
-
-# monitor assign
-set $monitor_principal eDP-1
-set $monitor_external HDMI-2
-
-# Bind workspaces to monitors
-workspace $w1 output $monitor_principal
-workspace $w2 output $monitor_principal
-
-workspace $w3 output $monitor_external
-workspace $w4 output $monitor_external
-
-# force workspace 1 as default
-exec i3-msg workspace $w1
