@@ -35,6 +35,9 @@ popup_during_fullscreen smart
 # Keys bindings
 #
 
+# open main menu
+bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh
+
 # start a terminal
 bindsym $super+Return exec terminator
 bindsym $super+Shift+Return exec urxvt
