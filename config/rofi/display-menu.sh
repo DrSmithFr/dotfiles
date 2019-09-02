@@ -9,7 +9,7 @@ if [ "$selected" ]
 then
   case $selected in
     *Enable)
-      xrandr --output HDMI-2 --right-of eDP-1 --auto
+      xrandr --output HDMI-2 --above eDP-1 --auto
       notify-msg "HDMI enabled"
       ;;
     *Disable)

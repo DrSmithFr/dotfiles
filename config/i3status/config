@@ -71,6 +71,6 @@ battery 0 {
 
 tztime local {
 		format = "<span color='#ccc'> %time </span>"
-		format_time = "%d/%m/%y %H:%M:%S"
+		format_time = "%Y/%m/%d %H:%M:%S"
 }
 
