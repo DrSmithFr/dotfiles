@@ -11,6 +11,9 @@ floating_modifier $super
 # uncomment to enable polybar
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# disable touchpad by default
+exec_always xinput --disable "ELAN1200:00 04F3:3044 Touchpad"
+
 #autostart
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
