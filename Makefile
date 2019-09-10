@@ -30,7 +30,8 @@ install-deps:
 		libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev \
 		build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev \
 		libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev \
-		clang xfonts-terminus x11-utils fonts-font-awesome
+		clang xfonts-terminus x11-utils fonts-font-awesome \
+		python-gi gir1.2-gtk-3.0
 
 clear-configuration:
 	rm -f ~/.Xresources
@@ -71,6 +72,7 @@ plugins-clones:
 	-git clone https://github.com/dunst-project/dunst.git $(ROOT_DIR)/plugins/dunst
 	-git clone https://github.com/polybar/polybar.git $(ROOT_DIR)/plugins/polybar
 	-git clone https://github.com/stark/siji $(ROOT_DIR)/plugins/siji
+	-git clone https://github.com/mrichar1/clipster.git $(ROOT_DIR)/plugins/clipster
 
 plugins-install:
 	cd $(ROOT_DIR)/plugins/i3lock-fancy; sudo make install
@@ -79,3 +81,4 @@ plugins-install:
 	-cp -vs $(ROOT_DIR)/plugins/dunst/dunstify ~/.local/bin/
 	-mkdir $(ROOT_DIR)/plugins/polybar/build; cd $(ROOT_DIR)/plugins/polybar; ./build.sh
 	-cd $(ROOT_DIR)/plugins/siji; ./install.sh
+	-cd$(ROOT_DIR)/plugins/clipster; ./setup.py

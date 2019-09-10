@@ -1,12 +1,12 @@
 # set modifier
-set $super Mod4
+set $mod Mod4
 set $alt Mod1
 
 # set font
 font pango: DejaVu Sans Mono 10
 
-# Use Mouse+$super to drag floating windows to their wanted position
-floating_modifier $super
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # uncomment to enable polybar
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -42,10 +42,6 @@ bindsym Control+$alt+k exec i3lock-fancy --text="" && amixer -D pulse set Master
 # open main menu
 bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh
 
-# start a terminal
-bindsym $super+Return exec terminator
-bindsym $super+Shift+Return exec urxvt
-
 # disable mouse wheel
 bindsym button4 nop
 bindsym button5 nop
@@ -54,21 +50,21 @@ bindsym button5 nop
 bindsym XF86PowerOff exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
 
 # start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'DejaVu Sans Mono:size=10'"
-bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 2 -font 'DejaVu Sans Mono 10'
+bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'DejaVu Sans Mono:size=10'"
+bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 2 -font 'DejaVu Sans Mono 10'
 
 # WORKSPACETAB
 bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show window -sidebar-mode -columns 2 -font 'DejaVu Sans Mono 10'
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
-bindsym $super+Shift+F1 exec google-chrome
-bindsym $super+Shift+F2 exec nemo
+bindsym $mod+Shift+F1 exec google-chrome
+bindsym $mod+Shift+F2 exec nemo
 
 # changer le mode d'affichage des containers:
-bindsym $super+s layout toggle stacking
-bindsym $super+z layout toggle tabbed
-bindsym $super+e layout toggle default
+bindsym $mod+s layout toggle stacking
+bindsym $mod+z layout toggle tabbed
+bindsym $mod+e layout toggle default
 
 # music control
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse set Master '5%+' unmute"
@@ -87,44 +83,44 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # kill focused window
-bindsym $super+c kill
+bindsym $mod+c kill
 bindsym $alt+F4 kill
 
 # change focus
-bindsym $super+Left  focus left
-bindsym $super+Down  focus down
-bindsym $super+Up    focus up
-bindsym $super+Right focus right
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym $super+Shift+Left  move left
-bindsym $super+Shift+Down  move down
-bindsym $super+Shift+Up    move up
-bindsym $super+Shift+Right move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $super+h split h
+bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $super+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $super+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # toggle tiling / floating
-bindsym $super+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $super+Shift+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $super+Shift+r restart
+bindsym $mod+Shift+r restart
 
 # resize window
-bindsym $super+Control+Shift+Right resize shrink width  10 px or 10 ppt
-bindsym $super+Control+Shift+Down  resize grow   height 10 px or 10 ppt
-bindsym $super+Control+Shift+Up    resize shrink height 10 px or 10 ppt
-bindsym $super+Control+Shift+Left  resize grow   width  10 px or 10 ppt
+bindsym $mod+Control+Shift+Right resize shrink width  10 px or 10 ppt
+bindsym $mod+Control+Shift+Down  resize grow   height 10 px or 10 ppt
+bindsym $mod+Control+Shift+Up    resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Shift+Left  resize grow   width  10 px or 10 ppt
 
 #
 # Mouse management
@@ -138,10 +134,10 @@ mode "$mode_mouse" {
         bindsym Left exec xdotool mousemove_relative -- -30 0
 
         # faster(x2)
-        bindsym $super+Up exec xdotool mousemove_relative -- 0 -50
-        bindsym $super+Down exec xdotool mousemove_relative -- 0 50
-        bindsym $super+Right exec xdotool mousemove_relative -- 50 0
-        bindsym $super+Left exec xdotool mousemove_relative -- -50 0
+        bindsym $mod+Up exec xdotool mousemove_relative -- 0 -50
+        bindsym $mod+Down exec xdotool mousemove_relative -- 0 50
+        bindsym $mod+Right exec xdotool mousemove_relative -- 50 0
+        bindsym $mod+Left exec xdotool mousemove_relative -- -50 0
 
         # slower (1/3 normal)
         bindsym Control+Up exec xdotool mousemove_relative -- 0 -5
@@ -165,7 +161,7 @@ mode "$mode_mouse" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $super+m mode "$mode_mouse"
+bindsym $mod+m mode "$mode_mouse"
 
 #
 # Menu bar and Style
@@ -213,31 +209,31 @@ set $w0 "0: "
 bindsym $alt+Control+Right workspace next
 bindsym $alt+Control+Left  workspace prev
 
-bindsym $super+b workspace back_and_forth
-bindsym $super+Shift+b move container to workspace back_and_forth
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
 
-bindsym $super+ampersand  workspace number $w1
-bindsym $super+eacute     workspace number $w2
-bindsym $super+quotedbl   workspace number $w3
-bindsym $super+apostrophe workspace number $w4
-bindsym $super+parenleft  workspace number $w5
-bindsym $super+minus      workspace number $w6
-bindsym $super+egrave     workspace number $w7
-bindsym $super+underscore workspace number $w8
-bindsym $super+ccedilla   workspace number $w9
-bindsym $super+agrave     workspace number $w0
+bindsym $mod+ampersand  workspace number $w1
+bindsym $mod+eacute     workspace number $w2
+bindsym $mod+quotedbl   workspace number $w3
+bindsym $mod+apostrophe workspace number $w4
+bindsym $mod+parenleft  workspace number $w5
+bindsym $mod+minus      workspace number $w6
+bindsym $mod+egrave     workspace number $w7
+bindsym $mod+underscore workspace number $w8
+bindsym $mod+ccedilla   workspace number $w9
+bindsym $mod+agrave     workspace number $w0
 
 # move focused container to workspace
-bindsym $super+Shift+1 move container to workspace number $w1
-bindsym $super+Shift+2 move container to workspace number $w2
-bindsym $super+Shift+3 move container to workspace number $w3
-bindsym $super+Shift+4 move container to workspace number $w4
-bindsym $super+Shift+5 move container to workspace number $w5
-bindsym $super+Shift+6 move container to workspace number $w6
-bindsym $super+Shift+7 move container to workspace number $w7
-bindsym $super+Shift+8 move container to workspace number $w8
-bindsym $super+Shift+9 move container to workspace number $w9
-bindsym $super+Shift+0 move container to workspace number $w0
+bindsym $mod+Shift+1 move container to workspace number $w1
+bindsym $mod+Shift+2 move container to workspace number $w2
+bindsym $mod+Shift+3 move container to workspace number $w3
+bindsym $mod+Shift+4 move container to workspace number $w4
+bindsym $mod+Shift+5 move container to workspace number $w5
+bindsym $mod+Shift+6 move container to workspace number $w6
+bindsym $mod+Shift+7 move container to workspace number $w7
+bindsym $mod+Shift+8 move container to workspace number $w8
+bindsym $mod+Shift+9 move container to workspace number $w9
+bindsym $mod+Shift+0 move container to workspace number $w0
 
 # monitor assign
 set $monitor_principal eDP-1
@@ -320,3 +316,13 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="notify"] floating enable border 1pixel
 for_window [class="update-manager"] floating enable border 1pixel
 for_window [class="gnome-calculator"] floating enable border 1pixel resize set 640 480
+
+
+#
+# On demand app
+#
+bindsym $mod+Shift+BackSpace move scratchpad
+bindsym $mod+BackSpace scratchpad show
+
+for_window [instance=terminator|Terminator] floating enable, move window to scratchpad
+bindsym $mod+Return [instance=terminator|Terminator] scratchpad show, move position center
