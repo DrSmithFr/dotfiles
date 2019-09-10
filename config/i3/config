@@ -255,9 +255,9 @@ for_window [class=".*"] border pixel 1
 assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
 
-assign [class=jetbrains-toolbox|JetBrains Toolbox] $w3
-for_window [class=jetbrains-toolbox|JetBrains Toolbox] border none layout tabbed floating disable
-no_focus [class=jetbrains-toolbox|JetBrains Toolbox]
+assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w3
+for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout tabbed floating disable
+no_focus [class="jetbrains-toolbox|JetBrains Toolbox"]
 
 assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout tabbed
