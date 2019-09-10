@@ -31,6 +31,7 @@ exec --no-startup-id redshift
 # Enable popup during fullscreen
 hide_edge_borders smart
 popup_during_fullscreen smart
+focus_follows_mouse no
 
 #
 # Keys bindings
@@ -58,7 +59,6 @@ bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show win
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
-bindsym $mod+Shift+F1 exec google-chrome
 
 # changer le mode d'affichage des containers:
 bindsym $mod+s layout toggle stacking
@@ -82,7 +82,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # kill focused window
-bindsym $mod+c kill
 bindsym $alt+F4 kill
 
 # change focus
@@ -261,11 +260,13 @@ for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout stac
 
 assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout stacking
+no_focus [class=jetbrains-phpstorm]
 
 assign [class=java-lang-Thread] $w3
 for_window [class=java-lang-Thread] floating enable
 for_window [class=java-lang-Thread] move position center
 for_window [class=java-lang-Thread] border none layout stacking
+no_focus [class=java-lang-Thread]
 
 assign [window_role="browser"] $w1
 for_window [window_role="browser"] border none
@@ -323,11 +324,13 @@ for_window [class="gnome-calculator"] floating enable border 1pixel resize set 6
 bindsym $mod+Shift+BackSpace move scratchpad
 bindsym $mod+BackSpace scratchpad show
 
-exec --no-startup-id terminator
+exec_always --no-startup-id terminator
 for_window [instance=terminator|Terminator] floating enable, move window to scratchpad
+bindsym $mod+Shift+F1 exec terminator
 bindsym $mod+F1 [instance=terminator|Terminator] scratchpad show, move position center
 bindsym $mod+Return [instance=terminator|Terminator] scratchpad show, move position center
 
-exec --no-startup-id nemo
+exec_always --no-startup-id nemo
 for_window [instance=nemo|Nemo] floating enable, move window to scratchpad
+bindsym $mod+Shift+F2 exec nemo
 bindsym $mod+F2 [instance=nemo|Nemo] scratchpad show, move position center
