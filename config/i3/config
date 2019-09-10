@@ -59,7 +59,6 @@ bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show win
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 bindsym $mod+Shift+F1 exec google-chrome
-bindsym $mod+Shift+F2 exec nemo
 
 # changer le mode d'affichage des containers:
 bindsym $mod+s layout toggle stacking
@@ -324,5 +323,11 @@ for_window [class="gnome-calculator"] floating enable border 1pixel resize set 6
 bindsym $mod+Shift+BackSpace move scratchpad
 bindsym $mod+BackSpace scratchpad show
 
+exec --no-startup-id terminator
 for_window [instance=terminator|Terminator] floating enable, move window to scratchpad
+bindsym $mod+F1 [instance=terminator|Terminator] scratchpad show, move position center
 bindsym $mod+Return [instance=terminator|Terminator] scratchpad show, move position center
+
+exec --no-startup-id nemo
+for_window [instance=nemo|Nemo] floating enable, move window to scratchpad
+bindsym $mod+F2 [instance=nemo|Nemo] scratchpad show, move position center
