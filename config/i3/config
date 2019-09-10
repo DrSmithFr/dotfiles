@@ -61,7 +61,7 @@ bindsym $alt+Tab exec rofi -lines 12 -padding 18 -width 60 -location 0 -show win
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 
 # changer le mode d'affichage des containers:
-bindsym $mod+s layout toggle stacking
+bindsym $mod+s layout toggle tabbed
 bindsym $mod+z layout toggle tabbed
 bindsym $mod+e layout toggle default
 
@@ -256,26 +256,27 @@ assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
 
 assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w3
-for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout stacking floating disable
+for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout tabbed floating disable
+no_focus [class="jetbrains-toolbox|JetBrains Toolbox"]
 
 assign [class=jetbrains-phpstorm] $w3
-for_window [class=jetbrains-phpstorm] border none layout stacking
+for_window [class=jetbrains-phpstorm] border none layout tabbed
 no_focus [class=jetbrains-phpstorm]
 
 assign [class=java-lang-Thread] $w3
 for_window [class=java-lang-Thread] floating enable
 for_window [class=java-lang-Thread] move position center
-for_window [class=java-lang-Thread] border none layout stacking
+for_window [class=java-lang-Thread] border none layout tabbed
 no_focus [class=java-lang-Thread]
 
 assign [window_role="browser"] $w1
 for_window [window_role="browser"] border none
-for_window [window_role="browser"] layout stacking
+for_window [window_role="browser"] layout tabbed
 for_window [window_role="browser"] focus
 
 assign [class=google-chrome|Google-chrome] $w1
 for_window [class=google-chrome|Google-chrome] border none
-for_window [class=google-chrome|Google-chrome] layout stacking
+for_window [class=google-chrome|Google-chrome] layout tabbed
 
 assign [class=spotify|Spotify$] $w9
 for_window [class=spotify|Spotify$] border none
