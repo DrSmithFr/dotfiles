@@ -25,6 +25,7 @@ exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id google-chrome
 exec --no-startup-id spotify
 exec --no-startup-id franz
+exec --no-startup-id /home/john/Programmes/jetbrains-toolbox-1.14.5037/jetbrains-toolbox
 exec --no-startup-id redshift
 
 # Enable popup during fullscreen
@@ -34,6 +35,9 @@ popup_during_fullscreen smart
 #
 # Keys bindings
 #
+
+# lock
+bindsym Control+$alt+k exec i3lock-fancy --text="" && amixer -D pulse set Master mute && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && mode "default"
 
 # open main menu
 bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh
@@ -256,6 +260,9 @@ for_window [class=".*"] border pixel 1
 
 assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
+
+assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w3
+for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout stacking floating disable
 
 assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] border none layout stacking
