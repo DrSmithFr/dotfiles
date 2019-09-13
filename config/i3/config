@@ -26,7 +26,6 @@ exec --no-startup-id google-chrome
 exec --no-startup-id spotify
 exec --no-startup-id franz
 exec --no-startup-id /home/john/Programmes/jetbrains-toolbox-1.14.5037/jetbrains-toolbox
-exec --no-startup-id redshift
 
 # Enable popup during fullscreen
 hide_edge_borders smart
@@ -251,6 +250,7 @@ exec i3-msg workspace $w1
 # window rules
 #
 for_window [class=".*"] border pixel 1
+for_window [class=".*"] move position center
 
 assign [class=slack|Slack] $w2
 assign [window_role="browser-window"] $w2
@@ -323,13 +323,14 @@ for_window [class="gnome-calculator"] floating enable border 1pixel resize set 6
 # On demand app
 #
 bindsym $mod+Shift+BackSpace move scratchpad
-bindsym $mod+BackSpace scratchpad show
+bindsym $mod+BackSpace scratchpad show, move position center
 
 exec_always --no-startup-id terminator
 for_window [instance=terminator|Terminator] floating enable, move window to scratchpad
 bindsym $mod+Shift+F1 exec terminator
 bindsym $mod+F1 [instance=terminator|Terminator] scratchpad show, move position center
 bindsym $mod+Return [instance=terminator|Terminator] scratchpad show, move position center
+bindsym $mod+c [instance=terminator|Terminator] scratchpad show, move position center
 
 exec_always --no-startup-id nemo
 for_window [instance=nemo|Nemo] floating enable, move window to scratchpad
