@@ -37,7 +37,8 @@ focus_follows_mouse no
 #
 
 # lock
-bindsym Control+$alt+k exec i3lock-fancy --text="" && amixer -D pulse set Master mute && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && mode "default"
+#bindsym Control+$alt+k exec i3lock-fancy --text="" && amixer -D pulse set Master mute && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && mode "default"
+bindsym Control+$alt+k exec gdmflexiserver && amixer -D pulse set Master mute && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && mode "default"
 
 # open main menu
 bindsym Control+$alt+Delete exec rofi -show Menu -modi Menu:$HOME/.config/rofi/main-menu.sh

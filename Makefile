@@ -81,7 +81,6 @@ plugins-install:
 	cd $(ROOT_DIR)/plugins/dunst; make; sudo make install
 	cd $(ROOT_DIR)/plugins/dunst; make dunstify
 	-cp -vs $(ROOT_DIR)/plugins/dunst/dunstify ~/.local/bin/
-	-mkdir $(ROOT_DIR)/plugins/polybar/build; cd $(ROOT_DIR)/plugins/polybar; ./build.sh
 	-cd $(ROOT_DIR)/plugins/siji; ./install.sh
 	-cd$(ROOT_DIR)/plugins/clipster; ./setup.py
 	-cd$(ROOT_DIR)/plugins/nnn; make; sudo make strip install

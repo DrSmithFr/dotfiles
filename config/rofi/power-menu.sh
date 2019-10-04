@@ -8,7 +8,7 @@ then
   case $@ in
     1|*Lock)
         pkill rofi
-        i3lock-fancy --text="" && \
+        gdmflexiserver && \
         amixer -D pulse set Master mute && \
         dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
         ;;
