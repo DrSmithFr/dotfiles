@@ -10,19 +10,19 @@ then
   case $selected in
     1|*Above)
       notify-send --urgency=critical --app-name=HDMI -t 3000 "enabled - Above"
-      xrandr --output HDMI-2 --above eDP-1 --auto
+      xrandr --output HDMI-1 --above eDP-1 --auto
       ;;
     2|*Right)
       notify-send --urgency=critical --app-name=HDMI -t 3000 "enabled - Right"
-      xrandr --output HDMI-2 --right-of eDP-1 --auto
+      xrandr --output HDMI-1 --right-of eDP-1 --auto
       ;;
     3|*Left)
       notify-send --urgency=critical --app-name=HDMI -t 3000 "enabled - Left"
-      xrandr --output HDMI-2 --left-of eDP-1 --auto
+      xrandr --output HDMI-1 --left-of eDP-1 --auto
       ;;
     4|*None)
       notify-send --urgency=critical --app-name=HDMI -t 3000 "disabled"
-      xrandr --output HDMI-2 --off
+      xrandr --output HDMI-1 --off
       ;;
   esac
 else

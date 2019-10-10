@@ -10,11 +10,11 @@ then
   case $selected in
     1|*Enable)
       notify-send --urgency=critical --app-name=TouchPad -t 3000 "enabled"
-      xinput --enable "ELAN1200:00 04F3:3044 Touchpad" &
+      xinput --enable "CUST0001:00 04F3:30AA Touchpad" &
       ;;
     2|*Disable)
       notify-send --urgency=critical --app-name=TouchPad -t 3000 "disabled"
-      xinput --disable "ELAN1200:00 04F3:3044 Touchpad" &
+      xinput --disable "CUST0001:00 04F3:30AA Touchpad" &
       ;;
   esac
 else

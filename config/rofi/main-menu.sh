@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) HDMI\n(2) TouchPad\n(3) Power\n(4) Bluetooth"
+OPTIONS="(1) HDMI\n(2) TouchPad\n(3) Bluetooth\n(4) Power"
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\n\t'`
 
 selected=$@
@@ -16,13 +16,13 @@ then
       pkill rofi
       rofi -modi TOUCH:$HOME/.config/rofi/touchpad-menu.sh -show TOUCH &
       ;;
-    3|*Power)
-      pkill rofi
-      rofi -modi Power:$HOME/.config/rofi/power-menu.sh -show Power &
-      ;;
     3|*Bluetooth)
       pkill rofi
       blueman-manager &
+      ;;
+    4|*Power)
+      pkill rofi
+      rofi -modi Power:$HOME/.config/rofi/power-menu.sh -show Power &
       ;;
   esac
 else

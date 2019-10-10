@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) Lock\n(2) Logout\n(3) Shutdown\n(4) Reboot"
+OPTIONS="(1) Lock\n(2) Logout\n(3) Reboot\n(3) Shutdown"
 
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\r\n\t'`
 if [ "$@" ]
@@ -15,11 +15,11 @@ then
     2|*Logout)
       i3-msg exit
       ;;
-    3|*Shutdown)
-      shutdown now
-      ;;
-    5|*Reboot)
+    3|*Reboot)
       reboot
+      ;;
+    4|*Shutdown)
+      shutdown now
       ;;
   esac
 else
