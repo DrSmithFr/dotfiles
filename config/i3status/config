@@ -4,8 +4,8 @@ general {
         markup = pango
         interval = 5
         color_good = '#2f343f'
-		color_degraded = '#ebcb8b'
-		color_bad = '#ba5e57'
+        color_degraded = '#ebcb8b'
+        color_bad = '#ba5e57'
 }
 
 order += "load"
@@ -15,8 +15,8 @@ order += "disk /home"
 order += "disk /data"
 #order += "ethernet enp1s0"
 order += "wireless wlp2s0"
-order += "tztime local"
 order += "battery 1"
+order += "tztime local"
 order += "volume master"
 
 load {
@@ -37,7 +37,7 @@ disk "/home" {
 }
 
 disk "/data" {
-	format = "<span color='#ccc'>  %free </span>"
+    format = "<span color='#ccc'>  %free </span>"
 }
 
 ethernet enp1s0 {
@@ -59,7 +59,7 @@ volume master {
 }
 
 battery 1 {
-        format = "<span color='#ccc'>  %percentage </span>"
+        format = "<span color='#ccc'>  %status %percentage %remaining </span>"
         format_down = "No Battery"
         status_chr = "Charging"
         status_bat = "Battery"
@@ -70,7 +70,7 @@ battery 1 {
 }
 
 tztime local {
-		format = "<span color='#ccc'> %time </span>"
-		format_time = "%Y/%m/%d %H:%M:%S"
+        format = "<span color='#ccc'> %time </span>"
+        format_time = "%Y/%m/%d %H:%M:%S"
 }
 
