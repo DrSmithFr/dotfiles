@@ -32,7 +32,6 @@ exec --no-startup-id franz
 exec --no-startup-id /home/john/Programmes/jetbrains-toolbox-1.14.5037/jetbrains-toolbox
 
 # Enable popup during fullscreen
-hide_edge_borders smart
 popup_during_fullscreen smart
 focus_follows_mouse no
 
@@ -185,8 +184,8 @@ bar {
     }
 }
 
-# colour of border, background, text, indicator, and child_borderg
-client.focused          #ffffff #ffffff #333333 #593535 #505050
+# colour of border, background, text, indicator, and child_border
+client.focused          #ffffff #ffffff #333333 #593535 #ffffff
 client.focused_inactive #151515 #151515 #aaaaaa #151515 #151515
 client.unfocused        #151515 #151515 #aaaaaa #151515 #151515
 client.urgent           #151515 #ebcb8b #333333 #151515 #151515
@@ -197,8 +196,8 @@ client.background       #151515
 # Workspace related
 #
 set $w1 "1: "
-set $w2 "2: "
-set $w3 "3: "
+set $w2 "2: "
+set $w3 "3: "
 set $w4 "4: "
 set $w5 5
 set $w6 6
@@ -239,12 +238,12 @@ bindsym $mod+Shift+0 move container to workspace number $w0
 
 # Bind workspaces to monitors
 
-workspace $w2 output $monitor_principal
+workspace $w1 output $monitor_external
+workspace $w2 output $monitor_external
+
+workspace $w3 output $monitor_principal
 workspace $w4 output $monitor_principal
 workspace $w9 output $monitor_principal
-
-workspace $w1 output $monitor_external
-workspace $w3 output $monitor_external
 
 # force workspace 1 as default
 exec i3-msg workspace $w1
@@ -252,42 +251,39 @@ exec i3-msg workspace $w1
 #
 # window rules
 #
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 3
 for_window [class=".*"] move position center
 
-assign [class=slack|Slack] $w2
-assign [window_role="browser-window"] $w2
-
-assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w3
-for_window [class="jetbrains-toolbox|JetBrains Toolbox"] border none layout tabbed floating disable
-no_focus [class="jetbrains-toolbox|JetBrains Toolbox"]
-
-assign [class=jetbrains-phpstorm] $w3
-for_window [class=jetbrains-phpstorm] border none layout tabbed
-no_focus [class=jetbrains-phpstorm]
-
-assign [class=java-lang-Thread] $w3
-for_window [class=java-lang-Thread] floating enable
-for_window [class=java-lang-Thread] move position center
-for_window [class=java-lang-Thread] border none layout tabbed
-no_focus [class=java-lang-Thread]
-
 assign [window_role="browser"] $w1
-for_window [window_role="browser"] border none
-for_window [window_role="browser"] layout tabbed
+for_window [window_role="browser"] layout stacking
 for_window [window_role="browser"] focus
 
 assign [class=google-chrome|Google-chrome] $w1
-for_window [class=google-chrome|Google-chrome] border none
-for_window [class=google-chrome|Google-chrome] layout tabbed
+for_window [class=google-chrome|Google-chrome] layout stacking
 
-assign [class=spotify|Spotify$] $w9
-for_window [class=spotify|Spotify$] border none
-for_window [class=spotify|Spotify$] move window to workspace $w9
+assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w2
+for_window [class="jetbrains-toolbox|JetBrains Toolbox"] layout stacking floating disable
+no_focus [class="jetbrains-toolbox|JetBrains Toolbox"]
+
+assign [class=jetbrains-phpstorm] $w2
+for_window [class=jetbrains-phpstorm] layout stacking
+
+assign [class=java-lang-Thread] $w2
+for_window [class=java-lang-Thread] floating enable
+for_window [class=java-lang-Thread] move position center
+for_window [class=java-lang-Thread] layout stacking
+
+assign [class=slack|Slack] $w3
+assign [window_role="browser-window"] $w3
 
 assign [class=insomnia|Insomnia$] $w4
-for_window [class=insomnia|Insomnia$] border none
 for_window [class=insomnia|Insomnia$] move window to workspace $w4
+
+assign [class=spotify|Spotify$] $w9
+for_window [class=spotify|Spotify$] move window to workspace $w9
+
+assign [class="VirtualBox Machine|VirtualBox Machine"] $w0
+for_window [class="VirtualBox Machine|VirtualBox Machine"] move window to workspace $w0
 
 assign [class=x-terminal-emulator|X-terminal-emulator] $w0
 for_window [class=x-terminal-emulator|X-terminal-emulator] focus
@@ -297,34 +293,29 @@ for_window [class=Pavucontrol] resize set 640 480
 for_window [class=Pavucontrol] focus
 
 for_window [class=urxvt|URxvt$] floating enable
-for_window [class=urxvt|URxvt$] border 1pixel
 for_window [class=urxvt|URxvt$] resize set 1500 800
 for_window [class=urxvt|URxvt$] move position center
 for_window [class=urxvt|URxvt$] focus
 
 for_window [class=terminator|Terminator$] floating enable
-for_window [class=terminator|Terminator$] border 1pixel
 for_window [class=terminator|Terminator$] resize set 1500 800
 for_window [class=terminator|Terminator$] move position center
 for_window [class=terminator|Terminator$] focus
 
 for_window [class=nemo|Nemo$] floating enable
-for_window [class=nemo|Nemo$] border 1pixel
 for_window [class=nemo|Nemo$] resize set 1500 800
 for_window [class=nemo|Nemo$] move position center
 for_window [class=nemo|Nemo$] focus
 
 for_window [class=blueman-manager|Blueman-manager] floating enable
-for_window [class=blueman-manager|Blueman-manager] border 1pixel
 for_window [class=blueman-manager|Blueman-manager] resize set 1500 800
 for_window [class=blueman-manager|Blueman-manager] move position center
 for_window [class=blueman-manager|Blueman-manager] focus
 
 for_window [window_role="pop-up"] floating enable
-for_window [class="notify"] floating enable border 1pixel
-for_window [class="update-manager"] floating enable border 1pixel
-for_window [class="gnome-calculator"] floating enable border 1pixel resize set 640 480
-
+for_window [class="notify"] floating enable
+for_window [class="update-manager"] floating enable
+for_window [class="gnome-calculator"] floating enable resize set 640 480
 
 #
 # On demand app

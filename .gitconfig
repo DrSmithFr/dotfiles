@@ -41,6 +41,7 @@
 [fetch]
 	# Auto-fetch submodule changes (sadly, won't auto-update)
 	recurseSubmodules = on-demand
+	prune = true
 [grep]
 	# Consider most regexes to be ERE
 	extendedRegexp = true
