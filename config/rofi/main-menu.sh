@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="(1) HDMI\n(2) TouchPad\n(3) Bluetooth\n(4) Power"
+OPTIONS="(1) HDMI\n(2) DVI\n(3) TouchPad\n(4) Bluetooth\n(5) Power"
 option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\n\t'`
 
 selected=$@
@@ -10,17 +10,21 @@ then
   case $selected in
     1|*HDMI)
       pkill rofi
-      rofi -modi HDMI:$HOME/.config/rofi/display-menu.sh -show HDMI &
+      rofi -modi HDMI:$HOME/.config/rofi/hdmi-menu.sh -show HDMI &
       ;;
-    2|*TouchPad)
+    2|*DVI)
+      pkill rofi
+      rofi -modi HDMI:$HOME/.config/rofi/dvi-menu.sh -show DVI &
+      ;;
+    3|*TouchPad)
       pkill rofi
       rofi -modi TOUCH:$HOME/.config/rofi/touchpad-menu.sh -show TOUCH &
       ;;
-    3|*Bluetooth)
+    4|*Bluetooth)
       pkill rofi
       blueman-manager &
       ;;
-    4|*Power)
+    5|*Power)
       pkill rofi
       rofi -modi Power:$HOME/.config/rofi/power-menu.sh -show Power &
       ;;
