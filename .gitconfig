@@ -98,3 +98,5 @@
 	prereleaseSuffix = .beta
 	prereleaseSuffix = -rc
 	prereleaseSuffix = .rc
+[credential]
+	helper = store
