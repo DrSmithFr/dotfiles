@@ -14,7 +14,7 @@ then
       ;;
     2|*DVI)
       pkill rofi
-      rofi -modi HDMI:$HOME/.config/rofi/dvi-menu.sh -show DVI &
+      rofi -modi DVI:$HOME/.config/rofi/dvi-menu.sh -show DVI &
       ;;
     3|*TouchPad)
       pkill rofi
