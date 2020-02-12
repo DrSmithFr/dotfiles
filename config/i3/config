@@ -3,8 +3,9 @@ set $mod Mod4
 set $alt Mod1
 
 # monitor assign
-set $monitor_principal eDP-1-1
-set $monitor_external HDMI-1-1
+set $monitor_principal eDP-1
+set $monitor_hdmi HDMI-1
+set $monitor_dvi DVI-I-1-1
 
 # set font
 font pango: DejaVu Sans Mono 10
@@ -197,12 +198,12 @@ client.background       #151515
 #
 set $w1 "1: "
 set $w2 "2: "
-set $w3 "3: "
+set $w3 "3: "
 set $w4 "4: "
 set $w5 5
 set $w6 6
 set $w7 7
-set $w8 8
+set $w8 "8: "
 set $w9 "9: "
 set $w0 "0: "
 
@@ -237,12 +238,14 @@ bindsym $mod+Shift+9 move container to workspace number $w9
 bindsym $mod+Shift+0 move container to workspace number $w0
 
 # Bind workspaces to monitors
+workspace $w0 output $monitor_dvi
+workspace $w1 output $monitor_dvi
+workspace $w2 output $monitor_dvi
 
-workspace $w1 output $monitor_external
-workspace $w2 output $monitor_external
+workspace $w3 output $monitor_hdmi
+workspace $w4 output $monitor_hdmi
 
-workspace $w3 output $monitor_principal
-workspace $w4 output $monitor_principal
+workspace $w8 output $monitor_principal
 workspace $w9 output $monitor_principal
 
 # force workspace 1 as default
@@ -261,20 +264,19 @@ for_window [window_role="browser"] focus
 assign [class=google-chrome|Google-chrome] $w1
 for_window [class=google-chrome|Google-chrome] layout stacking
 
-assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w2
+assign [class="jetbrains-toolbox|JetBrains Toolbox"] $w3
 for_window [class="jetbrains-toolbox|JetBrains Toolbox"] layout stacking floating disable
 no_focus [class="jetbrains-toolbox|JetBrains Toolbox"]
 
-assign [class=jetbrains-phpstorm] $w2
+assign [class=jetbrains-phpstorm] $w3
 for_window [class=jetbrains-phpstorm] layout stacking
 
-assign [class=java-lang-Thread] $w2
 for_window [class=java-lang-Thread] floating enable
 for_window [class=java-lang-Thread] move position center
 for_window [class=java-lang-Thread] layout stacking
 
-assign [class=slack|Slack] $w3
-assign [window_role="browser-window"] $w3
+assign [class=slack|Slack] $w8
+assign [window_role="browser-window"] $w8
 
 assign [class=insomnia|Insomnia$] $w4
 for_window [class=insomnia|Insomnia$] move window to workspace $w4
