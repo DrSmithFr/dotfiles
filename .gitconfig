@@ -10,6 +10,8 @@
    st = status
    df = diff
    co = checkout
+   # for misspell
+   oc = checkout
    ci = commit
    cm = commit -a -m
    br = branch
