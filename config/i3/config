@@ -19,7 +19,6 @@ floating_modifier $mod
 #
 # Startup commands
 #
-exec --no-startup-id xinput --disable "ELAN1200:00 04F3:3044 Touchpad"
 exec --no-startup-id hsetroot -fill ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
@@ -29,8 +28,6 @@ exec --no-startup-id numlockx on
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id google-chrome
 exec --no-startup-id spotify
-exec --no-startup-id franz
-exec --no-startup-id /home/john/Programmes/jetbrains-toolbox-1.14.5037/jetbrains-toolbox
 
 # Enable popup during fullscreen
 popup_during_fullscreen smart
@@ -304,10 +301,10 @@ for_window [class=terminator|Terminator$] resize set 1500 800
 for_window [class=terminator|Terminator$] move position center
 for_window [class=terminator|Terminator$] focus
 
-for_window [class=nemo|Nemo$] floating enable
-for_window [class=nemo|Nemo$] resize set 1500 800
-for_window [class=nemo|Nemo$] move position center
-for_window [class=nemo|Nemo$] focus
+for_window [class=nautilus|Nautilus$] floating enable
+for_window [class=nautilus|Nautilus$] resize set 1500 800
+for_window [class=nautilus|Nautilus$] move position center
+for_window [class=nautilus|Nautilus$] focus
 
 for_window [class=blueman-manager|Blueman-manager] floating enable
 for_window [class=blueman-manager|Blueman-manager] resize set 1500 800
@@ -332,7 +329,7 @@ bindsym $mod+F1 [instance=terminator|Terminator] scratchpad show, move position 
 bindsym $mod+Return [instance=terminator|Terminator] scratchpad show, move position center
 bindsym $mod+c [instance=terminator|Terminator] scratchpad show, move position center
 
-exec_always --no-startup-id nemo
-for_window [instance=nemo|Nemo] floating enable, move window to scratchpad
-bindsym $mod+Shift+F2 exec nemo
-bindsym $mod+F2 [instance=nemo|Nemo] scratchpad show, move position center
+exec_always --no-startup-id nautilus|Nautilus
+for_window [instance=nautilus|Nautilus] floating enable, move window to scratchpad
+bindsym $mod+Shift+F2 exec nautilus|Nautilus
+bindsym $mod+F2 [instance=nautilus|Nautilus] scratchpad show, move position center
